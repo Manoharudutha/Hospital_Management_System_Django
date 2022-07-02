@@ -1,0 +1,30 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+
+<div>
+    <center><h2>View Doctors&nbsp;&nbsp;&nbsp;<a href="{% url 'add_doctor' %}" class="btn btn-success" style="margin-left:1050px;">Add Doctor+</a></h2></center>
+    <table id="example" class="table table-hover">
+        <thead>
+            <tr>
+                <th>DoctorID</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Speciality</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in doc %}
+            <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Mobile}}</td>
+            <td>{{i.Special}}</td>
+            <td><p><a href="{% url 'delete_doctor' i.id %}" onclick="return confirm('Are you sure wnat to delete?')" class="btn btn-danger">Delete</a></p></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'footer.html' %}

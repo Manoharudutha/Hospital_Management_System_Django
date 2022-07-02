@@ -1,0 +1,33 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% block content %}
+
+{% if error == "no" %}
+<script>
+    alert("login sucessfully");
+    window.location="{% url 'dashboard' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("invalid login")
+</script>
+{% endif %}
+
+<div class="container">
+    <h2 class="text-center">Admin</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Admin Name:</label>
+        <input type="text" class="form-control" name="uname" ><br><br>
+        <label>Password:</label>
+        <input type="password" class="form-control" name="pwd" ><br><br>
+       
+        <input type="submit" value="Login" class="form-control btn btn-primary text-center"/><br/><br>
+        <label><b>Note : </b>First create a superuser and then Log in with that superuser credentials</label>
+    </form>
+
+</div>
+{% endblock content %}
+{% include 'footer.html' %}

@@ -1,0 +1,32 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+
+<div>
+    <center><h2>View Appointment<a href="{% url 'add_appointment' %}" class="btn btn-success" style="margin-left:1095px;">Add Appointment+</a></h2></center>
+    <table id="example" class="table table-hover">
+        <thead>
+            <tr>
+                <th>AppointmnetID</th>
+                <th>DoctorName</th>
+                <th>PatientName</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in appoinment %}
+            <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.doctor.Name}}</td>
+            <td>{{i.patient.Name}}</td>
+            <td>{{i.Date}}</td> 
+            <td>{{i.time}}</td>
+            <td><p><a href="{% url 'delete_appointment' i.id %}" onclick="return confirm('Are you sure wnat to delete?')" class="btn btn-danger">Delete</a></p></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'footer.html' %}

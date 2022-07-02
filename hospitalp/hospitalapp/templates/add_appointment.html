@@ -1,0 +1,43 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% block content %}
+
+{% if error == "no" %}
+<script>
+    alert("Record Inserted successfully!");
+    window.location="{% url 'view_appointment' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid login, Try Again")
+</script>
+{% endif %} 
+
+<div class="container">
+    <h2 class="text-center">Add Appointment</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label> DoctorName</label>
+        <select name="doctor" class="form-control">
+            {% for i in doctor %}
+            <option value="{{i.Name}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <label> PatientName</label>
+        <select name="patient" class="form-control">
+            {% for i in patient %}
+            <option value="{{i.Name}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <label>Date</label>
+        <input type="date" class="form-control" name="date" ><br><br>
+        <label>Time</label>
+        <input type="time" class="form-control" name="time" ><br><br>
+        <input type="submit" value="Submit" class="form-control btn btn-primary text-center"/>
+    </form>
+
+</div>
+{% endblock content %}
+{% include 'footer.html' %}

@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+{% load static %}
+{% include 'navigation.html' %}
+<style>
+    .rounded
+    {
+        border-top:10px solid lightblue;
+        border-radius:5px;
+    }
+    .mydivstyle:hover
+    {
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+        transform: translateY(-20px);
+    }
+</style>
+
+{% block content %}
+    <h1 class="text-center">Admin Dashboard</h1>
+    <br/><br/><br/><br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 mydivstyle">
+                <h2 style="color:red;">{{d}}</h2>
+                <h4 style="color:blue;"><a href="{% url 'view_doctor' %}">Doctor</a></h4>
+                <hr class="rounded">
+            </div>
+            <div class="col-lg-4 col-sm-12 mydivstyle">
+                <h2 style="color:red;">{{p}}</h2>
+                <h4 style="color:blue;"><a href="{% url 'view_patient' %}">Patient</a></h4>
+                <hr class="rounded">
+            </div>
+            <div class="col-lg-4 col-sm-12 mydivstyle">
+                <h2 style="color:red;">{{a}}</h2>
+                <h4 style="color:blue;"><a href="{% url 'view_appointment' %}">Appointment</a></h4>
+                <hr class="rounded">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="mx-auto" style="width:500px;">
+    <a href="{% url 'home' %}" class="btn btn-info">Goto Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'contact' %}" class="btn btn-info">Goto contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'about' %}" class="btn btn-info">Goto About</a>   
+    </div>
+    
+{% endblock content %}
+{% include 'footer.html' %}
